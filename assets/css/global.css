@@ -1,0 +1,218 @@
+/* ============================================================
+   PORTAL DO CIDADÃO — GLOBAL.CSS
+   Variáveis, reset, header, footer e utilitários compartilhados
+   ============================================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* --- Variáveis CSS (tokens de design) --- */
+:root {
+  --azul-primario: #0d5ea6;
+  --azul-escuro:   #083a63;
+  --azul-header:   #0b3d6e;
+  --azul-footer:   #062a4d;
+  --amarelo:       #f5c518;
+  --branco:        #ffffff;
+  --cinza-texto:   #333333;
+  --cinza-claro:   #f4f6fb;
+  --card-bg:       rgba(255, 255, 255, 0.92);
+  --sombra:        0 8px 32px rgba(0, 0, 0, 0.14);
+  --radius:        14px;
+  --radius-sm:     8px;
+  --transicao:     0.3s ease;
+  --font-display:  'Sora', sans-serif;
+  --font-body:     'Inter', sans-serif;
+}
+
+/* --- Reset moderno --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--cinza-texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../images/fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.fade-in { opacity: 1; }
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  background: linear-gradient(135deg, var(--azul-header) 0%, #1565c0 100%);
+  color: var(--branco);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 72px;
+}
+
+.header-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+
+.header-brand { flex: 1; }
+
+.header-brand h1 {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 2.5vw, 20px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.header-brand p {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* --- Navegação --- */
+.site-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+}
+
+.site-nav a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  transition: var(--transicao);
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a.ativo {
+  background: rgba(255,255,255,0.15);
+  color: var(--branco);
+}
+
+/* --- Botão hambúrguer --- */
+.btn-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.btn-menu span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--branco);
+  border-radius: 2px;
+  transition: var(--transicao);
+}
+
+/* Animação hambúrguer → X */
+.btn-menu.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.btn-menu.aberto span:nth-child(2) { opacity: 0; }
+.btn-menu.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--azul-footer);
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  padding: 18px 20px;
+  font-size: 13px;
+  margin-top: auto;
+}
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+.btn-primario {
+  display: inline-block;
+  background: var(--azul-primario);
+  color: var(--branco);
+  padding: 11px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transicao);
+  letter-spacing: 0.3px;
+}
+
+.btn-primario:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13,94,166,0.35);
+}
+
+/* ============================================================
+   RESPONSIVO — HEADER
+   ============================================================ */
+@media (max-width: 768px) {
+  .btn-menu { display: flex; }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: var(--azul-header);
+    padding: 12px 16px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  .site-nav.aberto { display: block; }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .site-nav a {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,209 @@
+/* ============================================================
+   ACOMPANHAMENTO.CSS — Estilos da página de consulta
+   ============================================================ */
+
+/* --- Container --- */
+.pagina-consulta {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+/* --- Card de consulta --- */
+.consulta-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--sombra);
+}
+
+.consulta-card h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+}
+
+.consulta-card .subtitulo {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+/* --- Formulário de busca --- */
+.form-busca {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.form-busca input {
+  padding: 11px 14px;
+  border: 1.5px solid #dde3ed;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+  background: #fff;
+  color: var(--cinza-texto);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-busca input:focus {
+  outline: none;
+  border-color: var(--azul-primario);
+  box-shadow: 0 0 0 3px rgba(13,94,166,0.12);
+}
+
+/* Remove setas de number input */
+.form-busca input[type="number"]::-webkit-outer-spin-button,
+.form-busca input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-busca input[type="number"] { -moz-appearance: textfield; }
+
+.btn-consultar {
+  padding: 12px;
+  background: linear-gradient(135deg, var(--azul-primario), #1565c0);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transicao);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-consultar svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--branco);
+}
+
+.btn-consultar:hover {
+  background: linear-gradient(135deg, var(--azul-escuro), var(--azul-primario));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,94,166,0.3);
+}
+
+/* --- Divisor --- */
+.divisor {
+  border: none;
+  border-top: 1.5px solid #e8edf4;
+  margin-bottom: 24px;
+}
+
+/* --- Área de resultado --- */
+.resultado {
+  min-height: 60px;
+  transition: var(--transicao);
+}
+
+.resultado-vazio {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.resultado-vazio svg {
+  width: 40px;
+  height: 40px;
+  fill: #ccc;
+}
+
+/* --- Card de resultado encontrado --- */
+.resultado-dados {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dado-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--cinza-claro);
+  border-radius: var(--radius-sm);
+  gap: 12px;
+}
+
+.dado-linha .rotulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.dado-linha .valor {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  text-align: right;
+  font-weight: 500;
+}
+
+/* --- Badge de status --- */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.3px;
+}
+
+.badge-status.analise   { background: #fff8e1; color: #8a6d00; border: 1px solid #f5c518; }
+.badge-status.resolvido { background: #e8f5e9; color: #1b5e20; border: 1px solid #81c784; }
+.badge-status.rejeitado { background: #ffebee; color: #b71c1c; border: 1px solid #ef9a9a; }
+
+.badge-status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+/* --- Erro / não encontrado --- */
+.resultado-erro {
+  text-align: center;
+  padding: 20px;
+  background: #fff5f5;
+  border: 1px solid #ffcccc;
+  border-radius: var(--radius-sm);
+  color: #c0392b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 500px) {
+  .consulta-card { padding: 28px 20px; }
+  .dado-linha { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .dado-linha .valor { text-align: left; }
+}

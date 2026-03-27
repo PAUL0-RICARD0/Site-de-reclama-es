@@ -1,84 +1,111 @@
 <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assents/css/inicio.css">
-    <title>Portal do Cidadão</title>
-</head>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de Reclamações da Prefeitura Municipal. Registre e acompanhe suas solicitações.">
+  <title>Início — Portal do Cidadão</title>
 
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/inicio.css">
+</head>
 <body>
 
-<header>
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
 
-    <div class="header-container">
+      <img
+        src="assets/images/logo.jpg"
+        alt="Brasão da Prefeitura de Jiquiriçá"
+        class="header-logo"
+      >
 
-        <img src="assents/images/631595021_18218771167313911_2641831913024611215_n.jpg"
-        alt="Logo da Prefeitura"
-        class="header-logo">
+      <div class="header-brand">
+        <h1>Portal do Cidadão</h1>
+        <p>Prefeitura Municipal de Jiquiriçá</p>
+      </div>
 
-    <div class="titulo">
-        <h1>Portal de Reclamações da Prefeitura</h1>
-        <p>Ajude a melhorar nossa cidade</p>
+      <!-- Botão hambúrguer (aparece só no mobile) -->
+      <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navegação -->
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="reclamacao.html">Fazer Reclamação</a></li>
+          <li><a href="acompanhar.html">Acompanhar</a></li>
+        </ul>
+      </nav>
+
     </div>
+  </header>
 
-    <nav class="menu-topo">
+  <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
+  <main class="hero">
 
-    <div class="menu-mobile">☰</div>
+    <span class="hero-badge" aria-label="Portal oficial">
+      <!-- ícone cidade -->
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/>
+      </svg>
+      Portal Oficial
+    </span>
 
-    <ul class="menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="reclamacao.html">Fazer Reclamação</a></li>
-        <li><a href="acompanhar.html">Acompanhar Reclamação</a></li>
-    </ul>
+    <h2>Ajude a melhorar<br>a nossa cidade</h2>
+    <p>Registre problemas urbanos, acompanhe suas solicitações e participe ativamente da gestão municipal.</p>
 
-</nav>
+    <!-- Cards de ação -->
+    <div class="cards-grid">
 
-</div>
-
-</header>
-<main class="container">
-
-<section>
-
-    <div>
+      <article class="card-acao">
+        <div class="card-icon" aria-hidden="true">
+          <!-- ícone formulário -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/>
+          </svg>
+        </div>
         <h3>Registrar Reclamação</h3>
-        <p>Informe um problema da cidade.</p>
-        <a href="reclamacao.html">Registrar</a>
-    </div>
+        <p>Informe um problema na sua rua ou bairro. Nossa equipe vai analisar e tomar as providências necessárias.</p>
+        <a href="reclamacao.html" class="btn-card">
+          Registrar agora
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+          </svg>
+        </a>
+      </article>
 
-    <div>
+      <article class="card-acao">
+        <div class="card-icon" aria-hidden="true">
+          <!-- ícone lupa -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </div>
         <h3>Acompanhar Reclamação</h3>
-        <p>Veja o andamento da sua solicitação.</p>
-        <a href="acompanhar.html">Acompanhar</a>
+        <p>Consulte o andamento da sua solicitação usando o número de protocolo recebido no cadastro.</p>
+        <a href="acompanhar.html" class="btn-card">
+          Consultar status
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+          </svg>
+        </a>
+      </article>
+
     </div>
+  </main>
 
-</section>
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="site-footer">
+    <p>© 2025 Prefeitura Municipal de Jiquiriçá — Portal do Cidadão</p>
+  </footer>
 
-</main>
-
-<footer>
-    <p>Prefeitura Municipal - Portal do Cidadão</p>
-</footer>
-
-<script>
-// Transição suave entre páginas
-document.addEventListener('DOMContentLoaded', function() {
-    // Fade in ao carregar a página
-    document.body.classList.add('fade-in');
-    
-    // Fade out ao clicar em links
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.body.classList.remove('fade-in');
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 500); // Tempo da transição
-        });
-    });
-});
-</script>
-
+  <!-- Scripts -->
+  <script src="assets/js/global.js"></script>
 </body>
 </html>

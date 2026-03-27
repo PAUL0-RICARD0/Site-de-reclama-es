@@ -1,199 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assents/css/reclamacao.css">
-<title>Registrar Reclamação</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registre uma reclamação sobre problemas urbanos no Portal do Cidadão.">
+  <title>Registrar Reclamação — Portal do Cidadão</title>
 
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/reclamacao.css">
+</head>
 <body>
 
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
 
+      <img
+        src="assets/images/logo.jpg"
+        alt="Brasão da Prefeitura de Jiquiriçá"
+        class="header-logo"
+      >
 
-<section id="container">
+      <div class="header-brand">
+        <h1>Portal do Cidadão</h1>
+        <p>Prefeitura Municipal de Jiquiriçá</p>
+      </div>
 
-<form id="formReclamacao">
+      <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-<h2>Registrar Reclamação</h2>
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="reclamacao.html">Fazer Reclamação</a></li>
+          <li><a href="acompanhar.html">Acompanhar</a></li>
+        </ul>
+      </nav>
 
-<div class="field">
-  <label for="tipo">Tipo de Problema</label>
-  <select id="tipo" name="tipo">
-    <option>Iluminação pública</option>
-    <option>Buraco na rua</option>
-    <option>Lixo acumulado</option>
-    <option>Esgoto</option>
-    <option>Árvore / poda</option>
-    <option>Outro</option>
-  </select>
-</div>
+    </div>
+  </header>
 
-<div class="field hidden" id="campoOutro">
-  <label for="tipoOutro">Por favor, especifique</label>
-  <input type="text" id="tipoOutro" name="tipoOutro" placeholder="Descreva o problema">
-</div>
+  <!-- ===================== FORMULÁRIO ===================== -->
+  <main class="pagina-form">
+    <div class="form-card">
 
-<div class="field">
-  <label for="endereco">Endereço do Problema</label>
-  <input id="endereco" type="text" name="endereco" placeholder="Digite o endereço" required>
-</div>
+      <h2>Registrar Reclamação</h2>
+      <p class="subtitulo">Preencha os dados abaixo e envie sua solicitação</p>
 
-<div class="field">
-  <label for="descricao">Descrição</label>
-  <textarea id="descricao" name="descricao" rows="4"></textarea>
-</div>
+      <form id="form-reclamacao" novalidate>
 
-<div class="field">
-  <label for="foto">Enviar Foto</label>
-  <input id="foto" type="file">
-</div>
+        <!-- Tipo de problema -->
+        <div class="campo">
+          <label for="tipo">Tipo de Problema</label>
+          <select id="tipo" name="tipo" required>
+            <option value="Iluminação pública">Iluminação pública</option>
+            <option value="Buraco na rua">Buraco na rua</option>
+            <option value="Lixo acumulado">Lixo acumulado</option>
+            <option value="Esgoto">Esgoto</option>
+            <option value="Árvore / poda">Árvore / poda</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
 
-<div class="field">
-  <label for="nome">Nome</label>
-  <input id="nome" type="text" name="nome" required>
-</div>
+        <!-- Campo "Outro" — aparece com animação -->
+        <div class="campo campo-outro" id="campo-outro" aria-live="polite">
+          <label for="tipo-outro">Por favor, especifique</label>
+          <input
+            type="text"
+            id="tipo-outro"
+            name="tipo-outro"
+            placeholder="Descreva o tipo de problema"
+          >
+        </div>
 
-<div class="field">
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email" required>
-</div>
+        <!-- Endereço -->
+        <div class="campo">
+          <label for="endereco">Endereço do Problema</label>
+          <input
+            type="text"
+            id="endereco"
+            name="endereco"
+            placeholder="Ex: Rua das Flores, 123 — Centro"
+            required
+          >
+        </div>
 
-<button type="submit">Enviar Reclamação</button>
+        <!-- Descrição -->
+        <div class="campo">
+          <label for="descricao">Descrição <span style="font-weight:400;color:#999">(opcional)</span></label>
+          <textarea
+            id="descricao"
+            name="descricao"
+            rows="3"
+            placeholder="Forneça mais detalhes sobre o problema…"
+          ></textarea>
+        </div>
 
-</form>
-</section>
+        <!-- Foto -->
+        <div class="campo">
+          <label for="foto">Foto do problema <span style="font-weight:400;color:#999">(opcional)</span></label>
+          <input type="file" id="foto" name="foto" accept="image/*">
+        </div>
 
-<!-- Modal de confirmação -->
-<div class="modal" id="modalProtocolo" aria-hidden="true">
-  <div class="modal-backdrop" data-close="true"></div>
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
-    <button class="modal-close" type="button" aria-label="Fechar">×</button>
-    <h3 id="modalTitulo">Reclamação registrada</h3>
-    <p>Protocolo: <strong id="modalProtocoloNumero"></strong></p>
-    <p>Guarde este número para acompanhar.</p>
-    <button class="modal-ok" type="button">OK</button>
+        <!-- Nome -->
+        <div class="campo">
+          <label for="nome">Seu Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Como você se chama?"
+            required
+          >
+        </div>
+
+        <!-- E-mail -->
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seu@email.com"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Reclamação</button>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- ===================== MODAL DE PROTOCOLO ===================== -->
+  <div
+    class="modal-overlay"
+    id="modal-protocolo"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-titulo"
+    aria-hidden="true"
+  >
+    <div class="modal-caixa">
+
+      <!-- Ícone de sucesso -->
+      <div class="modal-icone" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+      </div>
+
+      <h3 id="modal-titulo">Reclamação registrada!</h3>
+      <p>Seu protocolo de atendimento é:</p>
+      <div class="protocolo-numero" id="protocolo-numero" aria-live="polite">—</div>
+      <p>Guarde este número para acompanhar o andamento da sua solicitação.</p>
+
+      <button class="btn-modal" type="button" data-fechar-modal>Entendido</button>
+    </div>
   </div>
-</div>
 
-<script>
-// Transição suave entre páginas
-document.addEventListener('DOMContentLoaded', function() {
-    // Fade in ao carregar a página
-    document.body.classList.add('fade-in');
-    
-    // Fade out ao clicar em links
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.body.classList.remove('fade-in');
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 500); // Tempo da transição
-        });
-    });
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="site-footer">
+    <p>© 2025 Prefeitura Municipal de Jiquiriçá — Portal do Cidadão</p>
+  </footer>
 
-const tipoSelect = document.getElementById("tipo");
-const campoOutro = document.getElementById("campoOutro");
-const tipoOutroInput = document.getElementById("tipoOutro");
-
-tipoSelect.addEventListener("change", function(){
-
-    if(tipoSelect.value === "Outro"){
-        campoOutro.classList.remove("hidden")
-        campoOutro.style.maxHeight = campoOutro.scrollHeight + "px"
-        campoOutro.style.opacity = "1"
-        tipoOutroInput.setAttribute("required", true)
-
-    }else{
-
-        campoOutro.style.maxHeight = "0"
-        campoOutro.style.opacity = "0"
-
-        setTimeout(()=>{
-            campoOutro.classList.add("hidden")
-        },300)
-
-        tipoOutroInput.removeAttribute("required")
-        tipoOutroInput.value=""
-    }
-
-
-});
-
-    // Configurações do modal
-    const modal = document.getElementById('modalProtocolo');
-    const modalNumero = document.getElementById('modalProtocoloNumero');
-    const closeElements = modal.querySelectorAll('[data-close], .modal-close, .modal-ok');
-
-    function showModal(protocolo) {
-        modalNumero.textContent = protocolo;
-        modal.setAttribute('aria-hidden', 'false');
-        modal.classList.add('modal--visible');
-    }
-
-    function hideModal() {
-        modal.setAttribute('aria-hidden', 'true');
-        modal.classList.remove('modal--visible');
-    }
-
-    closeElements.forEach(el => {
-        el.addEventListener('click', hideModal);
-    });
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.classList.contains('modal--visible')) {
-            hideModal();
-        }
-    });
-
-    const formReclamacao = document.getElementById('formReclamacao');
-
-    formReclamacao.addEventListener('submit', function(e){
-        e.preventDefault();
-
-        // pegar valores
-        let tipo = document.querySelector('[name="tipo"]').value
-        let tipoOutro = tipoOutroInput.value.trim()
-        if (tipo === 'Outro' && tipoOutro) {
-            tipo = tipoOutro
-        }
-        let endereco = document.querySelector('[name="endereco"]').value
-        let descricao = document.querySelector('[name="descricao"]').value
-        let email = document.querySelector('[name="email"]').value
-
-        let protocolo = Math.floor(Math.random() * 100000)
-
-        let reclamacao = {
-            protocolo: protocolo,
-            tipo: tipo,
-            endereco: endereco,
-            descricao: descricao,
-            email: email,
-            status: "Em análise",
-            data: new Date().toLocaleDateString()
-        }
-
-        // pegar banco
-        let banco = JSON.parse(localStorage.getItem("reclamacoes")) || []
-
-        // salvar
-        banco.push(reclamacao)
-        localStorage.setItem("reclamacoes", JSON.stringify(banco))
-
-        // Mostrar modal de confirmação
-        showModal(protocolo)
-
-        // Limpar campos do formulário
-        formReclamacao.reset();
-    })
-});
-</script>
-
-<footer>
-    <p>Prefeitura Municipal - Portal do Cidadão</p>
-</footer>
+  <!-- Scripts -->
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/reclamacao.js"></script>
 </body>
-
-
 </html>

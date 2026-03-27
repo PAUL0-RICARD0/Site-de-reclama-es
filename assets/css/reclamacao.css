@@ -1,0 +1,242 @@
+/* ============================================================
+   RECLAMAÇÃO.CSS — Estilos da página de registro
+   ============================================================ */
+
+/* --- Container centralizado --- */
+.pagina-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+/* --- Card do formulário --- */
+.form-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: var(--sombra);
+}
+
+.form-card h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.form-card .subtitulo {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+/* --- Campos --- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  font-family: var(--font-display);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #dde3ed;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+  background: #fff;
+  color: var(--cinza-texto);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--azul-primario);
+  box-shadow: 0 0 0 3px rgba(13, 94, 166, 0.12);
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.campo input[type="file"] {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* --- Campo "Outro" com animação --- */
+.campo-outro {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin-bottom 0.35s;
+  margin-bottom: 0;
+}
+
+.campo-outro.visivel {
+  max-height: 120px;
+  opacity: 1;
+  margin-bottom: 16px;
+}
+
+/* --- Botão submit --- */
+.btn-submit {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--azul-primario), #1565c0);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transicao);
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, var(--azul-escuro), var(--azul-primario));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,94,166,0.35);
+}
+
+.btn-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================================
+   MODAL DE PROTOCOLO
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  padding: 20px;
+}
+
+.modal-overlay.visivel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-caixa {
+  background: var(--branco);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+  transform: scale(0.92);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.visivel .modal-caixa {
+  transform: scale(1);
+}
+
+.modal-icone {
+  width: 60px;
+  height: 60px;
+  background: #e8f5e9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.modal-icone svg {
+  width: 30px;
+  height: 30px;
+  fill: #2e7d32;
+}
+
+.modal-caixa h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--azul-escuro);
+  margin-bottom: 10px;
+}
+
+.modal-caixa p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.protocolo-numero {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--azul-primario);
+  letter-spacing: 2px;
+  background: var(--cinza-claro);
+  padding: 8px 24px;
+  border-radius: var(--radius-sm);
+  margin: 12px 0 20px;
+  border: 2px dashed #b0c4de;
+}
+
+.modal-caixa .btn-modal {
+  width: 100%;
+  padding: 12px;
+  background: var(--azul-primario);
+  color: var(--branco);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.modal-caixa .btn-modal:hover {
+  background: var(--azul-escuro);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 500px) {
+  .form-card { padding: 28px 20px; }
+}

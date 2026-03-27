@@ -1,98 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assents/css/acompnhamento.css">
-<title>Acompanhar Reclamação</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acompanhe sua reclamação pelo número de protocolo no Portal do Cidadão.">
+  <title>Acompanhar Reclamação — Portal do Cidadão</title>
 
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/acompanhamento.css">
+</head>
 <body>
 
-<section class="container">
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
 
-<div class="card">
+      <img
+        src="assets/images/logo.jpg"
+        alt="Brasão da Prefeitura de Jiquiriçá"
+        class="header-logo"
+      >
 
-<h2>Consultar Protocolo</h2>
+      <div class="header-brand">
+        <h1>Portal do Cidadão</h1>
+        <p>Prefeitura Municipal de Jiquiriçá</p>
+      </div>
 
-<form class="form-busca">
+      <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-<input type="text" id="protocolo" placeholder="Número do protocolo">
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="reclamacao.html">Fazer Reclamação</a></li>
+          <li><a href="acompanhar.html">Acompanhar</a></li>
+        </ul>
+      </nav>
 
-<input type="email" id="email" placeholder="Digite seu email">
+    </div>
+  </header>
 
-<button type="button" onclick="buscar()">Consultar</button>
+  <!-- ===================== CONSULTA ===================== -->
+  <main class="pagina-consulta">
+    <div class="consulta-card">
 
-</form>
+      <h2>Consultar Protocolo</h2>
+      <p class="subtitulo">Digite o número do protocolo e o e-mail usados no cadastro</p>
 
-<hr>
+      <!-- Formulário de busca -->
+      <div class="form-busca" role="search">
+        <input
+          type="text"
+          id="protocolo"
+          placeholder="Número do protocolo (ex: 047382)"
+          aria-label="Número do protocolo"
+          inputmode="numeric"
+        >
+        <input
+          type="email"
+          id="email"
+          placeholder="Seu e-mail"
+          aria-label="E-mail cadastrado"
+        >
+        <button class="btn-consultar" id="btn-consultar" type="button">
+          <!-- ícone lupa -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          Consultar
+        </button>
+      </div>
 
-<div class="resultado" id="resultado">
+      <hr class="divisor">
 
-<h3>Status da Reclamação:</h3>
+      <!-- Área de resultado -->
+      <section id="resultado" aria-live="polite" aria-label="Resultado da consulta">
+        <div class="resultado-vazio">
+          <!-- ícone documento -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
+          </svg>
+          Informe o protocolo e o e-mail para consultar o status da reclamação.
+        </div>
+      </section>
 
-<p><strong>Protocolo:</strong> -</p>
-<p><strong>Tipo de problema:</strong> -</p>
-<p><strong>Endereço:</strong> -</p>
-<p><strong>Status:</strong> -</p>
-<p><strong>Data:</strong> -</p>
+    </div>
+  </main>
 
-</div>
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="site-footer">
+    <p>© 2025 Prefeitura Municipal de Jiquiriçá — Portal do Cidadão</p>
+  </footer>
 
-</div>
-
-</section>
-
-<footer>
-    <p>Prefeitura Municipal - Portal do Cidadão</p>
-</footer>
-
-<script>
-// Transição suave entre páginas
-document.addEventListener('DOMContentLoaded', function() {
-    // Fade in ao carregar a página
-    document.body.classList.add('fade-in');
-    
-    // Fade out ao clicar em links
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.body.classList.remove('fade-in');
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 500); // Tempo da transição
-        });
-    });
-});
-
-function buscar(){
-
-let protocolo = document.getElementById("protocolo").value
-let email = document.getElementById("email").value
-
-let banco = JSON.parse(localStorage.getItem("reclamacoes")) || []
-
-let resultado = banco.find(r => 
-r.protocolo == protocolo && r.email == email
-)
-
-if(resultado){
-
-    document.getElementById("resultado").innerHTML = `
-    <p><b>Protocolo:</b> ${resultado.protocolo}</p>
-    <p><b>Tipo de problema:</b> ${resultado.tipo}</p>
-    <p><b>Endereço:</b> ${resultado.endereco}</p>
-    <p><b>Status:</b> ${resultado.status}</p>
-    <p><b>Data:</b> ${resultado.data}</p>
-    `
-
-}else{
-
-    document.getElementById("resultado").innerHTML = "Dados não encontrados"
-
-}
-}
-</script>
-
+  <!-- Scripts -->
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/acompanhamento.js"></script>
 </body>
 </html>
