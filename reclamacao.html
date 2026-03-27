@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assents/css/reclamacao.css">
+<title>Registrar Reclamação</title>
+</head>
+
+<body>
+
+
+
+<section id="container">
+
+<form id="formReclamacao">
+
+<h2>Registrar Reclamação</h2>
+
+<div class="field">
+  <label for="tipo">Tipo de Problema</label>
+  <select id="tipo" name="tipo">
+    <option>Iluminação pública</option>
+    <option>Buraco na rua</option>
+    <option>Lixo acumulado</option>
+    <option>Esgoto</option>
+    <option>Árvore / poda</option>
+    <option>Outro</option>
+  </select>
+</div>
+
+<div class="field hidden" id="campoOutro">
+  <label for="tipoOutro">Por favor, especifique</label>
+  <input type="text" id="tipoOutro" name="tipoOutro" placeholder="Descreva o problema">
+</div>
+
+<div class="field">
+  <label for="endereco">Endereço do Problema</label>
+  <input id="endereco" type="text" name="endereco" placeholder="Digite o endereço" required>
+</div>
+
+<div class="field">
+  <label for="descricao">Descrição</label>
+  <textarea id="descricao" name="descricao" rows="4"></textarea>
+</div>
+
+<div class="field">
+  <label for="foto">Enviar Foto</label>
+  <input id="foto" type="file">
+</div>
+
+<div class="field">
+  <label for="nome">Nome</label>
+  <input id="nome" type="text" name="nome" required>
+</div>
+
+<div class="field">
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email" required>
+</div>
+
+<button type="submit">Enviar Reclamação</button>
+
+</form>
+</section>
+
+<!-- Modal de confirmação -->
+<div class="modal" id="modalProtocolo" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <button class="modal-close" type="button" aria-label="Fechar">×</button>
+    <h3 id="modalTitulo">Reclamação registrada</h3>
+    <p>Protocolo: <strong id="modalProtocoloNumero"></strong></p>
+    <p>Guarde este número para acompanhar.</p>
+    <button class="modal-ok" type="button">OK</button>
+  </div>
+</div>
+
+<script>
+// Transição suave entre páginas
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade in ao carregar a página
+    document.body.classList.add('fade-in');
+    
+    // Fade out ao clicar em links
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.remove('fade-in');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500); // Tempo da transição
+        });
+    });
+
+const tipoSelect = document.getElementById("tipo");
+const campoOutro = document.getElementById("campoOutro");
+const tipoOutroInput = document.getElementById("tipoOutro");
+
+tipoSelect.addEventListener("change", function(){
+
+    if(tipoSelect.value === "Outro"){
+        campoOutro.classList.remove("hidden")
+        campoOutro.style.maxHeight = campoOutro.scrollHeight + "px"
+        campoOutro.style.opacity = "1"
+        tipoOutroInput.setAttribute("required", true)
+
+    }else{
+
+        campoOutro.style.maxHeight = "0"
+        campoOutro.style.opacity = "0"
+
+        setTimeout(()=>{
+            campoOutro.classList.add("hidden")
+        },300)
+
+        tipoOutroInput.removeAttribute("required")
+        tipoOutroInput.value=""
+    }
+
+
+});
+
+    // Configurações do modal
+    const modal = document.getElementById('modalProtocolo');
+    const modalNumero = document.getElementById('modalProtocoloNumero');
+    const closeElements = modal.querySelectorAll('[data-close], .modal-close, .modal-ok');
+
+    function showModal(protocolo) {
+        modalNumero.textContent = protocolo;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('modal--visible');
+    }
+
+    function hideModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('modal--visible');
+    }
+
+    closeElements.forEach(el => {
+        el.addEventListener('click', hideModal);
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.classList.contains('modal--visible')) {
+            hideModal();
+        }
+    });
+
+    const formReclamacao = document.getElementById('formReclamacao');
+
+    formReclamacao.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        // pegar valores
+        let tipo = document.querySelector('[name="tipo"]').value
+        let tipoOutro = tipoOutroInput.value.trim()
+        if (tipo === 'Outro' && tipoOutro) {
+            tipo = tipoOutro
+        }
+        let endereco = document.querySelector('[name="endereco"]').value
+        let descricao = document.querySelector('[name="descricao"]').value
+        let email = document.querySelector('[name="email"]').value
+
+        let protocolo = Math.floor(Math.random() * 100000)
+
+        let reclamacao = {
+            protocolo: protocolo,
+            tipo: tipo,
+            endereco: endereco,
+            descricao: descricao,
+            email: email,
+            status: "Em análise",
+            data: new Date().toLocaleDateString()
+        }
+
+        // pegar banco
+        let banco = JSON.parse(localStorage.getItem("reclamacoes")) || []
+
+        // salvar
+        banco.push(reclamacao)
+        localStorage.setItem("reclamacoes", JSON.stringify(banco))
+
+        // Mostrar modal de confirmação
+        showModal(protocolo)
+
+        // Limpar campos do formulário
+        formReclamacao.reset();
+    })
+});
+</script>
+
+<footer>
+    <p>Prefeitura Municipal - Portal do Cidadão</p>
+</footer>
+</body>
+
+
+</html>

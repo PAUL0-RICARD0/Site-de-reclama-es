@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="assents/css/acompnhamento.css">
+<title>Acompanhar Reclamação</title>
+</head>
+
+<body>
+
+<section class="container">
+
+<div class="card">
+
+<h2>Consultar Protocolo</h2>
+
+<form class="form-busca">
+
+<input type="text" id="protocolo" placeholder="Número do protocolo">
+
+<input type="email" id="email" placeholder="Digite seu email">
+
+<button type="button" onclick="buscar()">Consultar</button>
+
+</form>
+
+<hr>
+
+<div class="resultado" id="resultado">
+
+<h3>Status da Reclamação:</h3>
+
+<p><strong>Protocolo:</strong> -</p>
+<p><strong>Tipo de problema:</strong> -</p>
+<p><strong>Endereço:</strong> -</p>
+<p><strong>Status:</strong> -</p>
+<p><strong>Data:</strong> -</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+    <p>Prefeitura Municipal - Portal do Cidadão</p>
+</footer>
+
+<script>
+// Transição suave entre páginas
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade in ao carregar a página
+    document.body.classList.add('fade-in');
+    
+    // Fade out ao clicar em links
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.remove('fade-in');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500); // Tempo da transição
+        });
+    });
+});
+
+function buscar(){
+
+let protocolo = document.getElementById("protocolo").value
+let email = document.getElementById("email").value
+
+let banco = JSON.parse(localStorage.getItem("reclamacoes")) || []
+
+let resultado = banco.find(r => 
+r.protocolo == protocolo && r.email == email
+)
+
+if(resultado){
+
+    document.getElementById("resultado").innerHTML = `
+    <p><b>Protocolo:</b> ${resultado.protocolo}</p>
+    <p><b>Tipo de problema:</b> ${resultado.tipo}</p>
+    <p><b>Endereço:</b> ${resultado.endereco}</p>
+    <p><b>Status:</b> ${resultado.status}</p>
+    <p><b>Data:</b> ${resultado.data}</p>
+    `
+
+}else{
+
+    document.getElementById("resultado").innerHTML = "Dados não encontrados"
+
+}
+}
+</script>
+
+</body>
+</html>

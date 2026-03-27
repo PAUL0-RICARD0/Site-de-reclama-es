@@ -1,0 +1,176 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+background-image: url(../images/{067CBACB-B53E-B77A-BB1A-701DDE84ECCD}.png);
+background-size: cover;
+background-position: center;
+opacity: 0;
+transition: opacity 0.5s ease;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+
+/* HEADER */
+
+.titulo{
+width:100%;
+display:flex;
+justify-content:center;
+background:#25167b;
+}
+
+.titulo h1{
+color:white;
+font-size:26px;
+padding:20px;
+}
+
+/* CONTAINER */
+
+/* Use padding instead of fixed height to keep layout flexible on mobile */
+.container{
+flex: 1;
+min-height: calc(100vh - 140px);
+display:flex;
+justify-content:center;
+align-items:center;
+padding: 40px 20px;
+}
+
+/* CARD */
+
+.card{
+background: rgba(255, 255, 255, 0.85);
+max-width:450px;
+width:100%;
+padding:35px;
+border-radius:12px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* FORM */
+
+.form-busca{
+display:flex;
+flex-direction: column;
+gap:10px;
+margin-top:20px;
+}
+
+.form-busca input{
+flex:1;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+hr{
+    margin: 20px 0;
+}
+
+/* remove setas de increment/decremento em inputs number */
+.form-busca input[type="number"]::-webkit-outer-spin-button,
+.form-busca input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-busca input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.form-busca button{
+background:#0d5ea6;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.form-busca button:hover{
+background:#083a63;
+}
+
+/* RESULTADO */
+
+.resultado{
+margin-top:25px;
+}
+
+.resultado h3{
+margin-bottom:10px;
+}
+
+.resultado p{
+margin-bottom:5px;
+}
+
+/* STATUS */
+
+.status{
+padding:3px 8px;
+border-radius:6px;
+font-size:14px;
+font-weight:bold;
+}
+
+.status.analise{
+background:#ffeaa7;
+color:#8a6d00;
+}
+
+.status.resolvido{
+background:#c8f7c5;
+color:#1e7e34;
+}
+
+.status.rejeitado{
+background:#ffcccc;
+color:#a40000;
+}
+
+/* RODAPÉ */
+
+footer {
+    background-color: #003f6b;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+/* RESPONSIVO */
+
+@media (max-width:768px){
+
+.titulo h1{
+    font-size: 22px;
+    padding: 16px;
+}
+
+.card{
+    width: 100%;
+    padding: 25px;
+}
+
+.form-busca{
+    flex-direction:column;
+    gap: 12px;
+}
+
+.form-busca button{
+    width: 100%;
+}
+
+}

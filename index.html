@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assents/css/inicio.css">
+    <title>Portal do Cidadão</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-container">
+
+        <img src="assents/images/631595021_18218771167313911_2641831913024611215_n.jpg"
+        alt="Logo da Prefeitura"
+        class="header-logo">
+
+    <div class="titulo">
+        <h1>Portal de Reclamações da Prefeitura</h1>
+        <p>Ajude a melhorar nossa cidade</p>
+    </div>
+
+    <nav class="menu-topo">
+
+    <div class="menu-mobile">☰</div>
+
+    <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="reclamacao.html">Fazer Reclamação</a></li>
+        <li><a href="acompanhar.html">Acompanhar Reclamação</a></li>
+    </ul>
+
+</nav>
+
+</div>
+
+</header>
+<main class="container">
+
+<section>
+
+    <div>
+        <h3>Registrar Reclamação</h3>
+        <p>Informe um problema da cidade.</p>
+        <a href="reclamacao.html">Registrar</a>
+    </div>
+
+    <div>
+        <h3>Acompanhar Reclamação</h3>
+        <p>Veja o andamento da sua solicitação.</p>
+        <a href="acompanhar.html">Acompanhar</a>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Prefeitura Municipal - Portal do Cidadão</p>
+</footer>
+
+<script>
+// Transição suave entre páginas
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade in ao carregar a página
+    document.body.classList.add('fade-in');
+    
+    // Fade out ao clicar em links
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.remove('fade-in');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500); // Tempo da transição
+        });
+    });
+});
+</script>
+
+</body>
+</html>
