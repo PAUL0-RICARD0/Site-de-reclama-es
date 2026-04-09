@@ -44,19 +44,26 @@ Funcionalidades
 Como Executar:
 
 Baixe ou clone este repositório:
-
 git clone <url-do-repositorio>
 
 Acesse a pasta do projeto:
-
 cd site-de-reclamacoes
 
 Abra o arquivo index.html no navegador.
 
+Prints: <img width="1902" height="924" alt="image" src="https://github.com/user-attachments/assets/54a3f954-135b-4cf7-84a6-a4e9fa2538c4" />
+<img width="1893" height="910" alt="image" src="https://github.com/user-attachments/assets/ec3da617-d000-4039-ada1-c9cc4f6e6222" />
+<img width="1916" height="919" alt="image" src="https://github.com/user-attachments/assets/38a643b9-2f20-4d37-ae66-0947644484cf" />
+
+
+
+
+
+
 Aprendizados:
-Estruturação de páginas web
-Manipulação do DOM
-Organização de arquivos
+Estruturação de páginas web,
+Manipulação do DOM,
+Organização de arquivos e
 Criação de interfaces simples
 
 Autor:
