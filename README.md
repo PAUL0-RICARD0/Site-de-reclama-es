@@ -1,10 +1,10 @@
-# 📢 Portal de Ouvidoria Municipal — Jiquiriçá/BA
+# Portal de Ouvidoria Municipal — Jiquiriçá/BA
 
 > Sistema web desenvolvido por iniciativa própria para modernizar o canal de comunicação entre cidadãos e a Prefeitura Municipal de Jiquiriçá. O projeto nasceu da identificação de uma necessidade real da comunidade: um meio digital, acessível e transparente para registrar reclamações e acompanhar respostas.
 
 ---
 
-## 🎯 Sobre o Projeto
+## Sobre o Projeto
 
 A maioria dos municípios pequenos não tem um canal digital de ouvidoria. Os cidadãos dependem de deslocamento presencial ou ligações telefônicas para registrar demandas. Este projeto resolve esse problema com uma solução web simples, funcional e de acesso imediato.
 
@@ -12,16 +12,16 @@ A maioria dos municípios pequenos não tem um canal digital de ouvidoria. Os ci
 
 ---
 
-## ✅ Funcionalidades
+## Funcionalidades
 
-- 📝 **Registro de reclamações** — formulário intuitivo com campos validados
-- 🔍 **Acompanhamento de solicitações** — consulta de status por protocolo
-- 🖥️ **Interface responsiva** — navegação clara em desktop e mobile
-- 🎨 **Design limpo e acessível** — foco na experiência do cidadão
+- **Registro de reclamações** — formulário intuitivo com campos validados
+- **Acompanhamento de solicitações** — consulta de status por protocolo
+- **Interface responsiva** — navegação clara em desktop e mobile
+- **Design limpo e acessível** — foco na experiência do cidadão
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia | Uso |
 |---|---|
@@ -31,7 +31,7 @@ A maioria dos municípios pequenos não tem um canal digital de ouvidoria. Os ci
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 ### Página inicial
 ![Página inicial](https://github.com/user-attachments/assets/54a3f954-135b-4cf7-84a6-a4e9fa2538c4)
@@ -44,7 +44,7 @@ A maioria dos municípios pequenos não tem um canal digital de ouvidoria. Os ci
 
 ---
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 site-de-reclamacoes/
@@ -70,7 +70,7 @@ site-de-reclamacoes/
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ```bash
 # Clone o repositório
@@ -85,11 +85,7 @@ cd site-de-reclamacoes
 
 ---
 
-## 💡 Contexto e Motivação
-
-Este projeto foi desenvolvido como resposta a uma necessidade real identificada no município de Jiquiriçá/BA. A ausência de um canal digital de ouvidoria motivou a criação de uma solução prática, com foco em utilidade pública.
-
-O desenvolvimento reforçou habilidades em:
+## O desenvolvimento reforçou habilidades em:
 - Estruturação semântica com HTML5
 - Organização de projetos multi-página
 - Manipulação do DOM com JavaScript puro
@@ -97,7 +93,7 @@ O desenvolvimento reforçou habilidades em:
 
 ---
 
-## 👤 Autor
+## Autor
 
 **Paulo Ricardo Menezes P. Santos**  
 Desenvolvedor Web em Formação | Estudante de ADS — IFBA  
